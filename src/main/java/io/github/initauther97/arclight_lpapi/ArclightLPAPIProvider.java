@@ -24,11 +24,13 @@ public class ArclightLPAPIProvider implements ModInitializer {
 
 		LOGGER.info("Arclight LPAPI Provider initializing");
 		ServerLifecycleEvents.SERVER_STARTED.register(server -> {
-			Plugin luckperms = Bukkit.getPluginManager().getPlugin("luckperms");
+			Plugin luckperms = Bukkit.getPluginManager().getPlugin("LuckPerms");
 			if (luckperms == null) {
 				LOGGER.error("Arclight LPAPI Provider cannot find LuckPerms Bukkit plugin. It usually means the plugin is not installed or failed to load correctly.");
 				LOGGER.error("Cannot proceed. Shutting down the server.");
 				server.stop(false);
+			} else {
+				LOGGER.info("Find LuckPerms plugin: {}", luckperms);
 			}
 		});
 	}
